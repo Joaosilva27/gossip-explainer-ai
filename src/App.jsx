@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <h1>sassy explainer</h1>
+      <h1 className='text-2xl'>sassy explainer</h1>
     </div>
   );
 }
