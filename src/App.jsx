@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className='min-h-screen bg-gray-50 p-4'>
-      <div className='max-w-lg mx-auto bg-white rounded-lg shadow p-6'>
+      <div className='max-w-3xl mx-auto bg-white rounded-lg shadow p-6'>
         <h1 className='text-3xl font-bold text-center text-pink-500 mb-6'>Gossip AI</h1>
 
         <div className='mb-6'>
@@ -56,7 +56,18 @@ function App() {
         {aiResponse && (
           <div className='mt-6 p-4 bg-gray-100 rounded-lg'>
             <h2 className='text-lg font-medium mb-2 text-gray-700'>The Hot Tea:</h2>
-            <ReactMarkdown children={aiResponse} remarkPlugins={[remarkGfm]} />,
+            <ReactMarkdown
+              children={aiResponse}
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: "h2",
+                p: ({ node, ...props }) => (
+                  <div className='mb-8'>
+                    <p {...props} />
+                  </div>
+                ),
+              }}
+            />
           </div>
         )}
       </div>
