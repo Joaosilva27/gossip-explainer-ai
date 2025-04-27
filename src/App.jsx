@@ -2,6 +2,8 @@ import "./App.css";
 import { GoogleGenAI } from "@google/genai";
 import { geminiPrompt } from "./Prompt";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
@@ -54,7 +56,7 @@ function App() {
         {aiResponse && (
           <div className='mt-6 p-4 bg-gray-100 rounded-lg'>
             <h2 className='text-lg font-medium mb-2 text-gray-700'>The Hot Tea:</h2>
-            <p className='whitespace-pre-wrap text-gray-800'>{aiResponse}</p>
+            <ReactMarkdown children={aiResponse} remarkPlugins={[remarkGfm]} />,
           </div>
         )}
       </div>
