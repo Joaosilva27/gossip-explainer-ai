@@ -7,7 +7,7 @@ const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 function App() {
   const [aiResponse, setAiResponse] = useState(undefined);
-  const [userPrompt, setUserPrompt] = useState("World war 2");
+  const [userPrompt, setUserPrompt] = useState("");
 
   async function onGossipGeneration() {
     const response = await ai.models.generateContent({
@@ -19,9 +19,13 @@ function App() {
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col items-center'>
       <h1 className='text-2xl'>Gossip AI</h1>
-      <button onClick={onGossipGeneration}>Generate your Gossip, queen</button>
+      <div>
+        <input onChange={e => setUserPrompt(e.target.value)} className='w-fit border-2 rounded-lg' placeholder='Type in your prompt..' />
+        <button onClick={onGossipGeneration}>Generate your Gossip, queen</button>
+      </div>
+
       {aiResponse}
     </div>
   );
