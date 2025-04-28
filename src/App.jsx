@@ -30,12 +30,17 @@ function App() {
     }
   }
 
+  function clearText() {
+    setUserPrompt("");
+    setAiResponse(undefined);
+  }
+
   return (
-    <div className='min-h-screen bg-black p-4 text-white'>
-      <div className='max-w-3xl mx-auto bg-gradient-to-r from-purple-900 to-pink-800 rounded-lg shadow-lg p-6 border border-pink-500'>
-        <h1 className='text-4xl font-extrabold text-center text-pink-300 mb-6 tracking-tight'>
-          <span className='bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent'>GOSSIP AI</span>
-        </h1>
+    <div className='min-h-screen bg-gray-900 text-white flex items-center justify-center p-4'>
+      <div className='w-full max-w-2xl'>
+        <header className='mb-8 text-center'>
+          <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500'>GOSSIP AI</h1>
+        </header>
 
         <div className='mb-6'>
           <textarea
@@ -46,13 +51,22 @@ function App() {
             rows='3'
           />
 
-          <button
-            onClick={onGossipGeneration}
-            disabled={isLoading}
-            className='w-full mt-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 uppercase tracking-wider'
-          >
-            {isLoading ? "Generating the gossip..." : "Spill the tea, sweetie 💅"}
-          </button>
+          <div className='flex gap-3 mt-3'>
+            <button
+              onClick={onGossipGeneration}
+              disabled={isLoading}
+              className='flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 uppercase tracking-wider'
+            >
+              {isLoading ? "Generating the gossip..." : "Spill the tea, sweetie 💅"}
+            </button>
+
+            <button
+              onClick={clearText}
+              className='bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105'
+            >
+              Clear
+            </button>
+          </div>
         </div>
 
         {aiResponse && (
