@@ -31,43 +31,50 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen bg-gray-50 p-4'>
-      <div className='max-w-3xl mx-auto bg-white rounded-lg shadow p-6'>
-        <h1 className='text-3xl font-bold text-center text-pink-500 mb-6'>Gossip AI</h1>
+    <div className='min-h-screen bg-black p-4 text-white'>
+      <div className='max-w-3xl mx-auto bg-gradient-to-r from-purple-900 to-pink-800 rounded-lg shadow-lg p-6 border border-pink-500'>
+        <h1 className='text-4xl font-extrabold text-center text-pink-300 mb-6 tracking-tight'>
+          <span className='bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent'>GOSSIP AI</span>
+        </h1>
 
         <div className='mb-6'>
           <textarea
             value={userPrompt}
             onChange={e => setUserPrompt(e.target.value)}
-            className='w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-pink-300'
-            placeholder='What topic/phrase do you want the tea to spill?'
+            className='w-full bg-black/40 border-2 border-pink-500 rounded-lg p-3 text-white placeholder-pink-300/70 focus:outline-none focus:ring-2 focus:ring-pink-400'
+            placeholder='Enter any keyword, name, or phrase to transform it into juicy gossip...'
             rows='3'
           />
 
           <button
             onClick={onGossipGeneration}
             disabled={isLoading}
-            className='w-full mt-3 bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-lg transition-colors'
+            className='w-full mt-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 uppercase tracking-wider'
           >
-            {isLoading ? "Generating the tea..." : "Generate your Gossip, queen"}
+            {isLoading ? "Generating the gossip..." : "Spill the tea, sweetie 💅"}
           </button>
         </div>
 
         {aiResponse && (
-          <div className='mt-6 p-4 bg-gray-100 rounded-lg'>
-            <h2 className='text-lg font-medium mb-2 text-gray-700'>The Hot Tea:</h2>
-            <ReactMarkdown
-              children={aiResponse}
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h1: "h2",
-                p: ({ node, ...props }) => (
-                  <div className='mb-8'>
-                    <p {...props} />
-                  </div>
-                ),
-              }}
-            />
+          <div className='mt-8 p-5 bg-black/50 rounded-lg border-l-4 border-pink-500'>
+            <h2 className='text-xl font-bold mb-4 text-pink-300 flex items-center'>
+              <span className='mr-2'>✨</span> THE HOT TEA <span className='ml-2'>✨</span>
+            </h2>
+            <div className='text-pink-100 font-medium'>
+              <ReactMarkdown
+                children={aiResponse}
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: "h2",
+                  p: ({ node, ...props }) => (
+                    <div className='mb-8'>
+                      <p className='leading-relaxed' {...props} />
+                    </div>
+                  ),
+                }}
+              />
+            </div>
+            <div className='mt-6 text-center text-pink-300/80 text-sm'>Hope you enjoyed the tea honey.</div>
           </div>
         )}
       </div>
