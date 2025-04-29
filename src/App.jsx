@@ -57,7 +57,7 @@ function App() {
               disabled={isLoading}
               className='flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 uppercase tracking-wider'
             >
-              {isLoading ? "Generating the gossip..." : "Spill the tea, sweetie 💅"}
+              {isLoading ? "Generating the gossip..." : "Spill the tea honey 💅"}
             </button>
 
             <button
